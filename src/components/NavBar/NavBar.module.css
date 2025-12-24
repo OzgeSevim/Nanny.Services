@@ -5,7 +5,8 @@
   width: 100%;
   height: auto;
   padding: 20px 96px;
-  background-color: red;
+  background-color: transparent;
+  position: fixed;
 }
 
 .navBarLogo {
@@ -19,24 +20,84 @@
   display: flex;
   flex-direction: row;
   gap: 40px;
-  margin-left: 300px;
+  margin-left: 600px;
 }
 
 .navListItem {
   list-style-type: none;
 }
-
 .navListItem a {
   text-decoration: none;
+  color: #fbfbfb;
+  font-weight: 400;
+  font-style: 16px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
 }
 .userIcon {
   border-radius: 8px;
   background-color: #fbfbfb;
-  color: red;
+  color: #f03f3b;
   padding: 8px;
 }
-.userBox {
+.userContainer {
   margin-left: 200px;
   display: flex;
-  gap: ;
+  gap: 24px;
+  margin-left: 217px;
+  align-items: center;
+}
+.userBox {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.userName {
+  color: #fbfbfb;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+}
+
+.logOutBtn {
+  color: #fbfbfb;
+  border-radius: 30px;
+  width: 134px;
+  height: 48px;
+  border: 1px solid #fbfbfb;
+  background-color: transparent;
+}
+
+.loginRegister {
+  display: flex;
+  gap: 8px;
+  margin-left: 92px;
+}
+
+.loginBtn {
+  width: 124px;
+  height: 48px;
+  border-radius: 30px;
+  border: 1px solid #fbfbfb66;
+  background-color: transparent;
+  font-style: 16px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  color: #fbfbfb;
+}
+
+.registerBtn {
+  width: 168px;
+  height: 48px;
+  border-radius: 30px;
+  background-color: #f03f3b;
+  border: none;
+  color: #fbfbfb;
+  font-weight: 500;
+  font-style: 16px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
 }

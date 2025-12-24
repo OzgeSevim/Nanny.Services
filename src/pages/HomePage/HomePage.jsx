@@ -1,12 +1,42 @@
 import React from "react";
 import css from "./HomePage.module.css";
 import { NavBar } from "../../components/NavBar/NavBar.jsx";
+import { MdOutlineArrowOutward } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <NavBar />
-    </div>
+      <div className={css.homePageContainer}>
+        <div className={css.homePageLeft}>
+          <h1 className={css.homePageLeftTitle}>
+            Make Life Easier for the Family:
+          </h1>
+          <p className={css.homePageLeftDesc}>
+            Find Babysitters Online for All Occasions
+          </p>
+          <button className={css.homePageLeftBtn}>
+            Get started
+            <span className={css.homePageLeftBtnIcon}>
+              <MdOutlineArrowOutward size={18} />
+            </span>
+          </button>
+        </div>
+
+        <div className={css.homePageRight}>
+          <div className={css.box}>
+            <div className={css.boxIcon}>
+              <FaCheck />
+            </div>
+            <div className={css.boxDesc}>
+              <p>Experienced nannies</p>
+              <span>15,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

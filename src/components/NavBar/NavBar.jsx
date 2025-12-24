@@ -46,17 +46,19 @@ export const NavBar = () => {
               className={css.registerBtn}
               onClick={() => setOpenModal("register")}
             >
-              Register
+              Registration
             </button>
           </>
         ) : (
-          <div className={css.userBox}>
-            <span className={css.userIcon}>
-              <FaUser size={10} />
-            </span>
-            <span className={css.userName}> {user.email.split("@")[0]}</span>
+          <div className={css.userContainer}>
+            <div className={css.userBox}>
+              <span className={css.userIcon}>
+                <FaUser size={12} />
+              </span>
+              <span className={css.userName}> {user.email.split("@")[0]}</span>
+            </div>
             <button className={css.logOutBtn} onClick={logoutUser}>
-              Log Out
+              Log out
             </button>
           </div>
         )}
