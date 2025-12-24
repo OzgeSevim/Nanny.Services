@@ -1,0 +1,42 @@
+.navBarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 20px 96px;
+  background-color: red;
+}
+
+.navBarLogo {
+  color: #fbfbfb;
+  font-weight: 500;
+  font-style: 24px;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+}
+.navList {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-left: 300px;
+}
+
+.navListItem {
+  list-style-type: none;
+}
+
+.navListItem a {
+  text-decoration: none;
+}
+.userIcon {
+  border-radius: 8px;
+  background-color: #fbfbfb;
+  color: red;
+  padding: 8px;
+}
+.userBox {
+  margin-left: 200px;
+  display: flex;
+  gap: ;
+}
