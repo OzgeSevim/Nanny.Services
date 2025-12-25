@@ -7,17 +7,17 @@ import { AuthContext } from "../../context/AuthContext.jsx";
 import { logoutUser } from "../../services/authService.js";
 import { FaUser } from "react-icons/fa";
 
-export const NavBar = () => {
+export const NavBar = ({ variant = "home" }) => {
   const { user } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(null);
   // null | "login" | "register"
 
   const closeModal = () => setOpenModal(null);
   return (
-    <div className={css.navBarContainer}>
+    <div className={`${css.navBarContainer} ${css[variant]}`}>
       <div className={css.navBarLogo}>Nanny.Services</div>
       <div className={css.navBarList}>
-        <ul className={css.navList}>
+        <ul className={`${css.navList} ${css[`${variant}NavList`]}`}>
           <li className={css.navListItem}>
             <NavLink to="/">Home</NavLink>
           </li>

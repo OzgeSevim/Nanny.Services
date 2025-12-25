@@ -9,7 +9,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <NavBar />
+      <NavBar variant="home" />
       <div className={css.homePageContainer}>
         <div className={css.homePageLeft}>
           <h1 className={css.homePageLeftTitle}>

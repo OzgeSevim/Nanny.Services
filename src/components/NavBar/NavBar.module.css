@@ -5,8 +5,9 @@
   width: 100%;
   height: auto;
   padding: 20px 96px;
-  background-color: transparent;
+  /* background-color: transparent; */
   position: fixed;
+  z-index: 10;
 }
 
 .navBarLogo {
@@ -94,10 +95,30 @@
   height: 48px;
   border-radius: 30px;
   background-color: #f03f3b;
+  border: 1px solid #fbfbfb66;
   border: none;
   color: #fbfbfb;
   font-weight: 500;
   font-style: 16px;
   line-height: 20px;
   letter-spacing: 0.01em;
+}
+
+.home {
+  background-color: transparent;
+}
+
+.homeNavList {
+  margin-left: 550px;
+}
+
+.nannies {
+  background-color: #f03f3b;
+}
+
+.nanniesNavList {
+  margin: 0 auto;
+  justify-content: center;
+  margin-left: 360px;
+  margin-right: 230px;
 }
