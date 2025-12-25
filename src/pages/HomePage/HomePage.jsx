@@ -3,8 +3,10 @@ import css from "./HomePage.module.css";
 import { NavBar } from "../../components/NavBar/NavBar.jsx";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <NavBar />
@@ -16,7 +18,10 @@ const HomePage = () => {
           <p className={css.homePageLeftDesc}>
             Find Babysitters Online for All Occasions
           </p>
-          <button className={css.homePageLeftBtn}>
+          <button
+            className={css.homePageLeftBtn}
+            onClick={() => navigate("/nannies")}
+          >
             Get started
             <span className={css.homePageLeftBtnIcon}>
               <MdOutlineArrowOutward size={18} />

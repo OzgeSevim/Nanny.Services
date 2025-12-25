@@ -49,27 +49,40 @@ const Register = ({ onClose }) => {
             }}
             validationSchema={formSchema}
           >
-            {({ status }) => (
-              <Form>
-                <div className={css.formInput}>
-                  <Field name="name" type="text" placeholder="Name" />
-                  <ErrorMessage name="name" component="span" />
-                </div>
-                <div className={css.formInput}>
-                  <Field name="email" type="email" placeholder="Email" />
-                  <ErrorMessage name="email" component="span" />
-                </div>
-                <div className={css.formInput}>
-                  <Field name="password" type="text" placeholder="Password" />
-                  <ErrorMessage name="password" component="span" />
-                </div>
-                <div>
-                  <button type="submit" className={css.btn}>
-                    Sign Up
-                  </button>
-                </div>
-              </Form>
-            )}
+            <Form className={css.form}>
+              <div className={css.formItem}>
+                <Field
+                  className={css.formInput}
+                  name="name"
+                  type="text"
+                  placeholder="Name"
+                />
+                <ErrorMessage name="name" component="span" />
+              </div>
+              <div className={css.formItem}>
+                <Field
+                  className={css.formInput}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                />
+                <ErrorMessage name="email" component="span" />
+              </div>
+              <div className={css.formItem}>
+                <Field
+                  className={css.formInput}
+                  name="password"
+                  type="text"
+                  placeholder="Password"
+                />
+                <ErrorMessage name="password" component="span" />
+              </div>
+              <div>
+                <button type="submit" className={css.btn}>
+                  Sign Up
+                </button>
+              </div>
+            </Form>
           </Formik>
         </div>
       </Modal>

@@ -76,6 +76,14 @@ const Login = ({ onClose }) => {
   return (
     <Modal onClose={onClose}>
       <div className={css.loginContainer}>
+        <div className={css.loginLabel}>
+          <h2 className={css.loginTitle}>Log In</h2>
+
+          <p className={css.loginDesc}>
+            Welcome back! Please enter your credentials to access your account
+            and continue your babysitter search.
+          </p>
+        </div>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={formSchema}
@@ -91,14 +99,31 @@ const Login = ({ onClose }) => {
             }
           }}
         >
-          <Form>
-            <Field name="email" type="email" placeholder="Email" />
-            <ErrorMessage name="email" component="span" />
+          <Form className={css.form}>
+            <div className={css.formItem}>
+              <Field
+                className={css.formInput}
+                name="email"
+                type="text"
+                placeholder="Email"
+              />
+              <ErrorMessage name="email" component="span" />
+            </div>
 
-            <Field name="password" type="password" placeholder="Password" />
-            <ErrorMessage name="password" component="span" />
-
-            <button type="submit">Log In</button>
+            <div className={css.formItem}>
+              <Field
+                className={css.formInput}
+                name="password"
+                type="text"
+                placeholder="Password"
+              />
+              <ErrorMessage name="password" component="span" />
+            </div>
+            <div>
+              <button type="submit" className={css.btn}>
+                Log In
+              </button>
+            </div>
           </Form>
         </Formik>
       </div>
