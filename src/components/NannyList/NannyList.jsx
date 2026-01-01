@@ -1,12 +1,3 @@
-// import React from "react";
-// import css from "./NannyList.module.css";
-
-// const NannyList = () => {
-//   return <div>NannyList</div>;
-// };
-
-// export default NannyList;
-
 import { useEffect, useState } from "react";
 import { getNannies } from "../../services/nannyService";
 import NannyCard from "../NannyCard/NannyCard.jsx";
@@ -19,7 +10,6 @@ const NannyList = () => {
 
   useEffect(() => {
     loadNannies();
-    // eslint-disable-next-line
   }, []);
 
   const loadNannies = async () => {
@@ -31,7 +21,11 @@ const NannyList = () => {
     }
 
     const entries = Object.entries(data);
-    const newNannies = entries.map(([_, value]) => value);
+
+    const newNannies = entries.map(([key, value]) => ({
+      id: key,
+      ...value,
+    }));
 
     setNannies((prev) => [...prev, ...newNannies]);
     setLastKey(entries[entries.length - 1][0]);
@@ -40,6 +34,8 @@ const NannyList = () => {
       setHasMore(false);
     }
   };
+
+  console.log("Fetched nannies:", nannies);
 
   return (
     <section className="nanny-list">
