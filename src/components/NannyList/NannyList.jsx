@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getNannies } from "../../services/nannyService";
 import NannyCard from "../NannyCard/NannyCard.jsx";
+import css from "./NannyList.module.css";
 
 const NannyList = () => {
   const [nannies, setNannies] = useState([]);
@@ -38,23 +39,26 @@ const NannyList = () => {
   console.log("Fetched nannies:", nannies);
 
   return (
-    <section className="nanny-list">
-      <ul className="nanny-list__items">
-        {nannies.map((nanny, index) => (
-          <NannyCard key={index} nanny={nanny} />
-        ))}
-      </ul>
-
-      {hasMore && (
-        <button
-          type="button"
-          className="nanny-list__load-more"
-          onClick={loadNannies}
-        >
-          Load more
-        </button>
-      )}
-    </section>
+    <div className={css.nannyListContainer}>
+      <div className={css.nannyLis}>
+        <ul className={css.nannyListItem}>
+          {nannies.map((nanny, index) => (
+            <NannyCard key={index} nanny={nanny} />
+          ))}
+        </ul>
+      </div>
+      <div className={css.loadMore}>
+        {hasMore && (
+          <button
+            type="button"
+            className={css.loadMoreBtn}
+            onClick={loadNannies}
+          >
+            Load more
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

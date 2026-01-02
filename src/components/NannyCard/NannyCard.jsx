@@ -3,6 +3,7 @@ import NannyDetails from "../NannyDetails/NannyDetails.jsx";
 import css from "./NannyCard.module.css";
 import { CiLocationOn } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci";
 import {
   addFavorite,
   removeFavorite,
@@ -59,7 +60,7 @@ const NannyCard = ({ nanny }) => {
   return (
     <div className={css.nannyCardContainer}>
       <div className={css.nannyImage}>
-        <img src={avatar_url} alt={name} width={100} />
+        <img src={avatar_url} alt={name} width={96} />
       </div>
       <div className={css.nannyInfo}>
         <div className={css.nannyTitle}>
@@ -81,50 +82,50 @@ const NannyCard = ({ nanny }) => {
                 Price / 1 hour: <span>{price_per_hour}$</span>
               </p>
             </div>
-            <div className={css.nannyTitleInfoItem}>
-              <button
-                onClick={handleFavoriteClick}
-                className={`heart-btn ${isFavorite ? "active" : ""}`}
-              >
-                ♥
-              </button>
-            </div>
           </div>
-          <div className={css.nannyAttributes}>
-            <div className={css.nannyAttributesItem}>
-              <p>
-                Age: <span>{age}</span>
-              </p>
-            </div>
-            <div className={css.nannyAttributesItem}>
-              <p>
-                Experience: <span>{experience}</span>
-              </p>
-            </div>
-            <div className={css.nannyAttributesItem}>
-              <p>
-                Kids Age: <span>{kids_age}</span>
-              </p>
-            </div>
-            <div className={css.nannyAttributesItem}>
-              <p>
-                Characters:
-                <span>
-                  {characters
-                    .map((char) => char.charAt(0).toUpperCase() + char.slice(1))
-                    .join(", ")}
-                </span>
-              </p>
-            </div>
-            <div className={css.nannyAttributesItem}>
-              <p>
-                Education: <span>{education}</span>
-              </p>
-            </div>
+          <div className={css.nannyFavoriteBtn}>
+            <button
+              onClick={handleFavoriteClick}
+              className={`heart-btn ${isFavorite ? "active" : ""}`}
+            >
+              <CiHeart size={26} />
+            </button>
           </div>
-          <div className={css.nannyAbout}>
-            <p>{about}</p>
+        </div>
+        <div className={css.nannyAttributes}>
+          <div className={css.nannyAttributesItem}>
+            <p>
+              Age: <span>{age}</span>
+            </p>
           </div>
+          <div className={css.nannyAttributesItem}>
+            <p>
+              Experience: <span>{experience}</span>
+            </p>
+          </div>
+          <div className={css.nannyAttributesItem}>
+            <p>
+              Kids Age: <span>{kids_age}</span>
+            </p>
+          </div>
+          <div className={css.nannyAttributesItem}>
+            <p>
+              Characters:
+              <span>
+                {characters
+                  .map((char) => char.charAt(0).toUpperCase() + char.slice(1))
+                  .join(", ")}
+              </span>
+            </p>
+          </div>
+          <div className={css.nannyAttributesItem}>
+            <p>
+              Education: <span>{education}</span>
+            </p>
+          </div>
+        </div>
+        <div className={css.nannyAbout}>
+          <p>{about}</p>
         </div>
         {/* READ MORE */}
         {!isDetailsOpen && (

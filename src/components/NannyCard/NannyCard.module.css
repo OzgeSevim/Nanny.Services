@@ -1,4 +1,4 @@
-.heart-btn {
+/* .heart-btn {
   background: transparent;
   border: none;
   font-size: 24px;
@@ -8,4 +8,37 @@
 
 .heart-btn.active {
   color: red;
+} */
+
+.nannyCardContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #fbfbfb;
+  border-radius: 24px;
+}
+
+.nannyImage {
+  height: 120px;
+  width: 120px;
+  border-radius: 30px;
+  border: 2px solid #0957c333;
+  padding: 12px;
+}
+
+.nannyImage img {
+  border-radius: 15px;
+}
+
+.nannyTitle {
+  display: flex;
+}
+
+.nannyTitleInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.nannyFavoriteBtn > .heart-btn {
+  border: none;
+  background: transparent;
 }

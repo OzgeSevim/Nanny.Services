@@ -4,6 +4,8 @@ import { ref, get } from "firebase/database";
 import { db } from "../../services/firebase.js";
 import NannyCard from "../../components/NannyCard/NannyCard.jsx";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import css from "./FavoritesPage.module.css";
+import { NavBar } from "../../components/NavBar/NavBar.jsx";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
@@ -13,14 +15,12 @@ const Favorites = () => {
     if (!user) return;
 
     const loadFavorites = async () => {
-      // 1️⃣ Favori ID'leri al
       const favoritesData = await getFavorites(user.uid);
 
       if (!favoritesData) return;
 
       const favoriteIds = Object.keys(favoritesData);
 
-      // 2️⃣ Tüm nannies listesini al
       const nanniesRef = ref(db, "nannies");
       const snapshot = await get(nanniesRef);
 
@@ -28,7 +28,6 @@ const Favorites = () => {
 
       const nanniesData = snapshot.val();
 
-      // 3️⃣ Favori olanları filtrele
       const filtered = Object.entries(nanniesData)
         .filter(([id]) => favoriteIds.includes(id))
         .map(([id, data]) => ({ id, ...data }));
@@ -39,15 +38,18 @@ const Favorites = () => {
     loadFavorites();
   }, [user]);
 
-  if (!favoriteNannies.length) {
-    return <p>Henüz favori bakıcı eklenmedi.</p>;
-  }
+  // if (!favoriteNannies.length) {
+  //   return <p>Henüz favori bakıcı eklenmedi.</p>;
+  // }
 
   return (
-    <div className="nannies-list">
-      {favoriteNannies.map((nanny) => (
-        <NannyCard key={nanny.id} nanny={nanny} />
-      ))}
+    <div className={css.favoriteContainer}>
+      <NavBar variant="nannies" />
+      <div className={css.nanniesList}>
+        {favoriteNannies.map((nanny) => (
+          <NannyCard key={nanny.id} nanny={nanny} />
+        ))}
+      </div>
     </div>
   );
 };
