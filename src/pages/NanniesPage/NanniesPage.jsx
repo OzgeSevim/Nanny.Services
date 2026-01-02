@@ -10,7 +10,6 @@ const NanniesPage = () => {
         <NavBar variant="nannies" />
       </div>
       <div>
-        <h1>nannies</h1>
         <NannyList />
       </div>
     </div>
