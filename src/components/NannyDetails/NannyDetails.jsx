@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "../Modal/Modal.jsx";
 import AppointmentForm from "../Appointment/AppointmentForm.jsx";
 import css from "./NannyDetails.module.css";
-import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
 
 const NannyDetails = ({ nanny }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,15 +18,15 @@ const NannyDetails = ({ nanny }) => {
                   <p>{r.reviewer.charAt(0).toUpperCase()}</p>
                 </div>
                 <div className={css.reviewerName}>
-                  <p>{r.reviewer}</p>
-                  <p>
-                    <CiStar />
-                    {r.rating}
+                  <p className={css.name}>{r.reviewer}</p>
+                  <p className={css.star}>
+                    <FaStar fill="#FFC531" />
+                    {Number(r.rating).toFixed(1)}
                   </p>
                 </div>
               </div>
 
-              <p>{r.comment}</p>
+              <p className={css.comment}>{r.comment}</p>
             </div>
           ))}
         </div>

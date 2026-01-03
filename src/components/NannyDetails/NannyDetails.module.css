@@ -1,0 +1,69 @@
+.details {
+  margin-top: 48px;
+}
+
+.reviewsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.reviewerLogo {
+  display: flex;
+  background: #0957c333;
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  color: #0957c3;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.reviewerName {
+  color: #11101c;
+  font-weight: 500;
+}
+
+.name {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.star {
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  gap: 8px;
+}
+
+.comment {
+  color: #11101c80;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 16px;
+}
+
+.appointmentBtn {
+  background-color: #f03f3b;
+  width: 215px;
+  height: 48px;
+  border-radius: 30px;
+  border: none;
+  margin-top: 48px;
+  color: #fbfbfb;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+}
