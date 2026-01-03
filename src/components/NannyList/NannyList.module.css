@@ -10,3 +10,20 @@
   flex-direction: column;
   gap: 32px;
 }
+.loadMoreBtn {
+  background-color: #f03f3b;
+  color: #fbfbfb;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  width: 159px;
+  height: 48px;
+  justify-content: center;
+  border-radius: 30px;
+  border: none;
+}
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}

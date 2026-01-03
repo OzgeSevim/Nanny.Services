@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import NannyDetails from "../NannyDetails/NannyDetails.jsx";
 import css from "./NannyCard.module.css";
 import { CiLocationOn } from "react-icons/ci";
-import { CiStar } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import {
   addFavorite,
   removeFavorite,
@@ -74,22 +74,24 @@ const NannyCard = ({ nanny }) => {
               <span>{location}</span>
             </div>
             <div className={css.nannyTitleInfoItem}>
-              <CiStar />
+              <FaStar fill="#FFC531" />
               <span>{rating}</span>
             </div>
             <div className={css.nannyTitleInfoItem}>
               <p>
-                Price / 1 hour: <span>{price_per_hour}$</span>
+                Price / 1 hour:{" "}
+                <span className={css.price}>{price_per_hour}$</span>
               </p>
             </div>
-          </div>
-          <div className={css.nannyFavoriteBtn}>
-            <button
-              onClick={handleFavoriteClick}
-              className={`heart-btn ${isFavorite ? "active" : ""}`}
-            >
-              <CiHeart size={26} />
-            </button>
+            <div className={css.nannyFavoriteBtn}>
+              <button onClick={handleFavoriteClick} className={css.heartBtn}>
+                {isFavorite ? (
+                  <FaRegHeart size={26} color="#e44848" /> // kırmızı kalp
+                ) : (
+                  <FaRegHeart size={26} color="#101828" /> // siyah kalp
+                )}
+              </button>
+            </div>
           </div>
         </div>
         <div className={css.nannyAttributes}>
