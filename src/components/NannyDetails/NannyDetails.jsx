@@ -38,10 +38,20 @@ const NannyDetails = ({ nanny }) => {
       >
         Make an appointment
       </button>
-
+      {/* 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           <AppointmentForm nanny={nanny} />
+        </Modal>
+      )}
+       */}
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <AppointmentForm
+            nanny={nanny}
+            onClose={() => setIsModalOpen(false)}
+          />
         </Modal>
       )}
     </div>
