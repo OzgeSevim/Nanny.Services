@@ -1,29 +1,26 @@
 import { useContext, useEffect, useState } from "react";
-import { getFavorites } from "../../services/favoritesService.js";
 import { ref, get } from "firebase/database";
 import { db } from "../../services/firebase.js";
 import NannyCard from "../../components/NannyCard/NannyCard.jsx";
 import { AuthContext } from "../../context/AuthContext.jsx";
-import css from "./FavoritesPage.module.css";
 import { NavBar } from "../../components/NavBar/NavBar.jsx";
+import css from "./FavoritesPage.module.css";
 
 const Favorites = () => {
-  const { user } = useContext(AuthContext);
+  const { user, favorites } = useContext(AuthContext);
   const [favoriteNannies, setFavoriteNannies] = useState([]);
 
   useEffect(() => {
     if (!user) return;
 
     const loadFavorites = async () => {
-      const favoritesData = await getFavorites(user.uid);
+      const favoriteIds = Object.keys(favorites);
+      if (favoriteIds.length === 0) {
+        setFavoriteNannies([]);
+        return;
+      }
 
-      if (!favoritesData) return;
-
-      const favoriteIds = Object.keys(favoritesData);
-
-      const nanniesRef = ref(db, "nannies");
-      const snapshot = await get(nanniesRef);
-
+      const snapshot = await get(ref(db, "nannies"));
       if (!snapshot.exists()) return;
 
       const nanniesData = snapshot.val();
@@ -36,19 +33,21 @@ const Favorites = () => {
     };
 
     loadFavorites();
-  }, [user]);
-
-  // if (!favoriteNannies.length) {
-  //   return <p>Henüz favori bakıcı eklenmedi.</p>;
-  // }
+  }, [user, favorites]); // favorites değişirse listeyi yeniden yükle
 
   return (
     <div className={css.favoriteContainer}>
-      <NavBar variant="nannies" />
+      <div className={css.navBar}>
+        <NavBar variant="nannies" />
+      </div>
       <div className={css.nanniesList}>
-        {favoriteNannies.map((nanny) => (
-          <NannyCard key={nanny.id} nanny={nanny} />
-        ))}
+        {favoriteNannies.length === 0 ? (
+          <p>Henüz favori bakıcı eklenmedi.</p>
+        ) : (
+          favoriteNannies.map((nanny) => (
+            <NannyCard key={nanny.id} nanny={nanny} />
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import NannyDetails from "../NannyDetails/NannyDetails.jsx";
 import css from "./NannyCard.module.css";
 import { CiLocationOn } from "react-icons/ci";
-import { FaStar } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+import { FaStar, FaRegHeart } from "react-icons/fa";
 import {
   addFavorite,
   removeFavorite,
@@ -11,16 +10,10 @@ import {
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const NannyCard = ({ nanny }) => {
-  const { user } = useContext(AuthContext);
+  const { user, favorites, setFavorites } = useContext(AuthContext);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  useEffect(() => {
-    if (!user) return;
-
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || {};
-    setIsFavorite(!!favorites[nanny.id]);
-  }, [user, nanny.id]);
+  const isFavorite = !!favorites[nanny.id];
 
   const handleFavoriteClick = async () => {
     if (!user) {
@@ -28,19 +21,19 @@ const NannyCard = ({ nanny }) => {
       return;
     }
 
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || {};
+    let updatedFavorites = { ...favorites };
 
     if (isFavorite) {
       await removeFavorite(user.uid, nanny.id);
-      delete favorites[nanny.id];
+      delete updatedFavorites[nanny.id];
     } else {
       await addFavorite(user.uid, nanny.id);
-      favorites[nanny.id] = true;
+      updatedFavorites[nanny.id] = true;
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    setIsFavorite(!isFavorite);
+    setFavorites(updatedFavorites);
   };
+
   const {
     name,
     about,
@@ -85,15 +78,15 @@ const NannyCard = ({ nanny }) => {
             </div>
             <div className={css.nannyFavoriteBtn}>
               <button onClick={handleFavoriteClick} className={css.heartBtn}>
-                {isFavorite ? (
-                  <FaRegHeart size={26} color="#e44848" /> // kırmızı kalp
-                ) : (
-                  <FaRegHeart size={26} color="#101828" /> // siyah kalp
-                )}
+                <FaRegHeart
+                  size={26}
+                  color={isFavorite ? "#e44848" : "#101828"}
+                />
               </button>
             </div>
           </div>
         </div>
+
         <div className={css.nannyAttributes}>
           <div className={css.nannyAttributesItem}>
             <p>
@@ -112,10 +105,10 @@ const NannyCard = ({ nanny }) => {
           </div>
           <div className={css.nannyAttributesItem}>
             <p>
-              Characters:
+              Characters:{" "}
               <span>
                 {characters
-                  .map((char) => char.charAt(0).toUpperCase() + char.slice(1))
+                  .map((c) => c.charAt(0).toUpperCase() + c.slice(1))
                   .join(", ")}
               </span>
             </p>
@@ -126,10 +119,11 @@ const NannyCard = ({ nanny }) => {
             </p>
           </div>
         </div>
+
         <div className={css.nannyAbout}>
           <p>{about}</p>
         </div>
-        {/* READ MORE */}
+
         {!isDetailsOpen && (
           <button
             type="button"
@@ -140,7 +134,6 @@ const NannyCard = ({ nanny }) => {
           </button>
         )}
 
-        {/* DETAILS */}
         {isDetailsOpen && <NannyDetails nanny={nanny} />}
       </div>
     </div>
