@@ -46,7 +46,7 @@ const NanniesPage = () => {
       <div className={css.navBar}>
         <NavBar variant="nannies" />
       </div>
-      <div>
+      <div className={css.content}>
         <Filters value={filter} onChange={setFilter} />
         <NannyList
           nannies={nannies}

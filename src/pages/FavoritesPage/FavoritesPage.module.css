@@ -4,3 +4,11 @@
   display: flex;
   justify-content: center;
 }
+.nanniesList {
+  display: flex;
+  flex-direction: column;
+  margin-left: 128px;
+  margin-right: 128px;
+  gap: 32px;
+  margin-top: 32px;
+}
